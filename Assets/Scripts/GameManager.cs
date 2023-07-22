@@ -17,6 +17,18 @@ public class GameManager : MonoBehaviour
     public float currentEnergy;
     public float[] usedEnergy;
 
+    //bullet time
+    /*public class BulletTime : MonoBehaviour
+    {
+        [SerializeField][Range(0, 1)] float time;
+
+        private void Update()
+        {
+            Time.timeScale = time;
+            Mathf.Lerp()
+        }
+    }*/
+
     private void Awake()
     {
         //lineRenderer.positionCount = 0;
