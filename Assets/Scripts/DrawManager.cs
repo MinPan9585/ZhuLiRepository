@@ -12,6 +12,7 @@ public class DrawManager : MonoBehaviour
 
     //public float maxEnergy;
     public float currentEnergy;
+    public float smoothing;
 
     private Camera cam;
     [SerializeField] private Line linePrefab;

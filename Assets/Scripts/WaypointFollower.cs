@@ -9,6 +9,14 @@ public class WaypointFollower : MonoBehaviour
 
     [SerializeField] private float speed = 2f;
 
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+
     private void Update()
     {
         if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position,transform.position) < .1f)

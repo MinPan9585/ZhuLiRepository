@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class Line : MonoBehaviour
@@ -37,10 +39,25 @@ public class Line : MonoBehaviour
         return Vector2.Distance(lineRenderer.GetPosition(lineRenderer.positionCount - 1), pos) > DrawManager.RESOLUTION;
     }
 
+
+
     IEnumerator DestroyLine()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
+        //StartCoroutine(Fade());
+        yield return new WaitForSeconds(2);
         DrawManager.dm.currentEnergy += lineRenderer.positionCount;
         Destroy(gameObject);
     }
+    /*IEnumerator Fade()
+    {
+        while (lineRenderer.material.color.a > 0.1f)
+        {
+            lineRenderer.material.color= new Color(lineRenderer.material.color.r,
+            lineRenderer.material.color.g,
+            lineRenderer.material.color.b,
+            Mathf.Lerp(lineRenderer.material.color.a, 0, DrawManager.dm.smoothing * Time.deltaTime));
+            yield return null;
+        }
+    }*/
 }
