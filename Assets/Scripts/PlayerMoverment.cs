@@ -27,50 +27,54 @@ public class PlayerMoverment : MonoBehaviour
     private float dashingTime = 0.1f;
     private float noDashTime = 0.1f;
 
-
+    public bool isDead;
 
     private enum MovementState { idle, running, jumping, falling, dashing }
 
-       private void Start()
+    private void Start()
     {
+        isDead = false;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
-       private void Update()
+    private void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
-        if(Input.GetKeyDown(KeyCode.W) && IsGrounded())
+        if (!isDead)
         {
-            Instantiate(isGrouded, transform.position, Quaternion.identity);
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            dirX = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
+            if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
+            {
+                Instantiate(isGrouded, transform.position, Quaternion.identity);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+
+            /* if (Input.GetButtonDown("Jump") && IsGrounded())
+             {
+                 Instantiate(isGrouded, transform.position, Quaternion.identity);
+                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+             }*/
+
+
+
+            //Dash ++
+
+            if (isDashing)
+            {
+                return;
+            }
+
+            if (Input.GetKeyDown(KeyCode.S) && canDash)
+            {
+                StartCoroutine(Dash());
+            }
+
+            UpdateAnimationUpdate();
         }
-
-       /* if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            Instantiate(isGrouded, transform.position, Quaternion.identity);
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }*/
-
-
-
-        //Dash ++
-
-        if (isDashing)
-        {
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.S)&&canDash)
-        {
-            StartCoroutine(Dash());
-        }
-
-        UpdateAnimationUpdate();
     }
 
 
@@ -83,6 +87,7 @@ public class PlayerMoverment : MonoBehaviour
         rb.gravityScale = 0f;
 
         rb.velocity = new Vector2(0f, dashingPower);
+        anim.SetTrigger("Player_Dashing");
         yield return new WaitForSeconds(dashingTime);
 
         //anim.SetTrigger("Player_Dashing");
@@ -97,35 +102,46 @@ public class PlayerMoverment : MonoBehaviour
 
     private void UpdateAnimationUpdate()
     {
+        print(rb.velocity.y);
         MovementState state;
 
-        if (dirX > 0f)
+        if (dirX > 0f && rb.velocity.y == 0)
         {
+            print("running");
             state = MovementState.running;
             sprite.flipX = false;
         }
-        else if (dirX < 0f)
+        else if (dirX < 0f && rb.velocity.y == 0)
         {
+            print("running");
             state = MovementState.running;
             sprite.flipX = true;
+        }
+        else if(dirX == 0f && rb.velocity.y == 0)
+        {
+            print("idle");
+            state = MovementState.idle;
+        }
+
+        else if (rb.velocity.y > .001f)
+        {
+            print("jjjjj");
+            state = MovementState.jumping;
+        }
+        else if (rb.velocity.y < -.001f && rb.velocity.y > -1f)
+        {
+            print("fff");
+            state = MovementState.falling;
+        }
+        else if(rb.velocity.y <= -1f)
+        {
+            print("ddddddddddddd");
+            state = MovementState.dashing;
         }
         else
         {
             state = MovementState.idle;
         }
-
-        if (rb.velocity.y > .001f)
-        {
-            state = MovementState.jumping;
-        }
-        else if (rb.velocity.y < -.001f&& rb.velocity.y > -100f)
-        {
-            state = MovementState.falling;
-        }
-        //else
-        //{ 
-            //state = MovementState.dashing;
-        //}
 
         anim.SetInteger("state", (int)state);
     }
