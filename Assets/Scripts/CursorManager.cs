@@ -18,7 +18,12 @@ public class CursorManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(Camera.main == null)
+        //Texture2D.alpha
+
+
+
+
+        if (Camera.main == null)
         {
             return;
         }

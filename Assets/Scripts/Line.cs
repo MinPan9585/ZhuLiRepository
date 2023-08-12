@@ -15,6 +15,15 @@ public class Line : MonoBehaviour
     {
         //drawManager = FindObjectOfType<DrawManager>();
         edgeCollider.transform.position -= transform.position;
+        //lineRenderer = GetComponent<LineRenderer>();
+        //lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        /*        float alpha = 1.0f;
+                Gradient gradient = new Gradient();
+                gradient.SetKeys(
+                    new GradientColorKey[] { new GradientColorKey(Color.green, 0.0f), new GradientColorKey(Color.red, 1.0f) },
+                    new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }*/
+        //);
+
         StartCoroutine(DestroyLine());
     }
 
@@ -26,7 +35,7 @@ public class Line : MonoBehaviour
         points.Add(pos);
 
         lineRenderer.positionCount++;
-        DrawManager.dm.currentEnergy --;
+        DrawManager.dm.currentEnergy--;
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, pos);
 
         edgeCollider.points = points.ToArray();
@@ -49,11 +58,25 @@ public class Line : MonoBehaviour
         DrawManager.dm.currentEnergy += lineRenderer.positionCount;
         Destroy(gameObject);
     }
+
+    /*IEnumerator Fade()
+    {
+        Gradient gradient = new Gradient();
+        float alpha = 1.0f;
+        while (alpha>0.000001f)
+        {
+            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) };
+
+             yield return null;
+        }*
+                
+    }*/
+
     /*IEnumerator Fade()
     {
         while (lineRenderer.material.color.a > 0.1f)
         {
-            lineRenderer.material.color= new Color(lineRenderer.material.color.r,
+            lineRenderer.material.color = new Color(lineRenderer.material.color.r,
             lineRenderer.material.color.g,
             lineRenderer.material.color.b,
             Mathf.Lerp(lineRenderer.material.color.a, 0, DrawManager.dm.smoothing * Time.deltaTime));
@@ -61,3 +84,4 @@ public class Line : MonoBehaviour
         }
     }*/
 }
+

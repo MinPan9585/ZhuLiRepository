@@ -22,14 +22,20 @@ public class PlayerMoverment : MonoBehaviour
 
     //Dash
     private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = -20f;
+    public bool isDashing;
+    private float dashingPower = -12f;
     private float dashingTime = 0.1f;
     private float noDashTime = 0.1f;
 
     public bool isDead;
 
     private enum MovementState { idle, running, jumping, falling, dashing }
+
+    //bullet time
+    //[SerializeField][Range(0, 1)] float time;
+
+    //ghost
+    public GameObject dashObj;
 
     private void Start()
     {
@@ -38,6 +44,10 @@ public class PlayerMoverment : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        transform.position = SaveManager.Instance.lastPosition;
+
+        dashObj.SetActive(true);
     }
 
     private void Update()
@@ -70,7 +80,15 @@ public class PlayerMoverment : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.S) && canDash)
             {
+                
                 StartCoroutine(Dash());
+                //print("slow");
+                //BulletTime.bt.time = 0;
+                //Mathf.Lerp(BulletTime.bt.time, Time.timeScale, 1f);
+                
+                
+                //TimeController.tc.bulletTimeScale = 0.1f;
+                //Time.fixedDeltaTime = TimeController.tc.defaultFixedDeltaTime * Time.timeScale;
             }
 
             UpdateAnimationUpdate();
@@ -83,11 +101,19 @@ public class PlayerMoverment : MonoBehaviour
         canDash = false;
         isDashing = true;
 
+
+
         float dashingGravity = rb.gravityScale;
         rb.gravityScale = 0f;
 
-        rb.velocity = new Vector2(0f, dashingPower);
+  
+        //rb.velocity = new Vector2(0f, 0f);
+        //yield return new WaitForSeconds(0.1f);
+        //rb.velocity = new Vector2(0f, 0.00001f);
         anim.SetTrigger("Player_Dashing");
+        //yield return new WaitForSeconds(0.1f);
+        rb.velocity = new Vector2(0f, dashingPower);
+
         yield return new WaitForSeconds(dashingTime);
 
         //anim.SetTrigger("Player_Dashing");
@@ -128,12 +154,50 @@ public class PlayerMoverment : MonoBehaviour
             print("jjjjj");
             state = MovementState.jumping;
         }
+        else //if (rb.velocity.y < -.001f)
+        {
+            print("fff");
+            state = MovementState.falling;
+        }
+        /*else if(rb.velocity.y <= -1f)
+        {
+            print("ddddddddddddd");
+            state = MovementState.dashing;
+        }*/
+        /*else
+        {
+            state = MovementState.idle;
+        }*/
+
+        /*if (dirX > 0f && rb.velocity.y == 0)
+        {
+            print("running");
+            state = MovementState.running;
+            sprite.flipX = false;
+        }
+        else if (dirX < 0f && rb.velocity.y == 0)
+        {
+            print("running");
+            state = MovementState.running;
+            sprite.flipX = true;
+        }
+        else if (dirX == 0f && rb.velocity.y == 0)
+        {
+            print("idle");
+            state = MovementState.idle;
+        }
+
+        else if (rb.velocity.y > .001f)
+        {
+            print("jjjjj");
+            state = MovementState.jumping;
+        }
         else if (rb.velocity.y < -.001f && rb.velocity.y > -1f)
         {
             print("fff");
             state = MovementState.falling;
         }
-        else if(rb.velocity.y <= -1f)
+        else if (rb.velocity.y <= -1f)
         {
             print("ddddddddddddd");
             state = MovementState.dashing;
@@ -141,7 +205,7 @@ public class PlayerMoverment : MonoBehaviour
         else
         {
             state = MovementState.idle;
-        }
+        }*/
 
         anim.SetInteger("state", (int)state);
     }
@@ -157,3 +221,20 @@ public class PlayerMoverment : MonoBehaviour
    
     //transform.localScale.y * 
 }
+
+
+
+
+/*public float time;
+private void Awake()
+{
+    bt = this;
+}
+
+private void Update()
+{
+    Time.timeScale = time;
+
+
+}
+*/
