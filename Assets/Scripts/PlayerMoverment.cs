@@ -128,35 +128,35 @@ public class PlayerMoverment : MonoBehaviour
 
     private void UpdateAnimationUpdate()
     {
-        print(rb.velocity.y);
+        //print(rb.velocity.y);
         MovementState state;
 
         if (dirX > 0f && rb.velocity.y == 0)
         {
-            print("running");
+            //print("running");
             state = MovementState.running;
             sprite.flipX = false;
         }
         else if (dirX < 0f && rb.velocity.y == 0)
         {
-            print("running");
+            //print("running");
             state = MovementState.running;
             sprite.flipX = true;
         }
         else if(dirX == 0f && rb.velocity.y == 0)
         {
-            print("idle");
+            //print("idle");
             state = MovementState.idle;
         }
 
         else if (rb.velocity.y > .001f)
         {
-            print("jjjjj");
+            //print("jjjjj");
             state = MovementState.jumping;
         }
         else //if (rb.velocity.y < -.001f)
         {
-            print("fff");
+            //print("fff");
             state = MovementState.falling;
         }
         /*else if(rb.velocity.y <= -1f)

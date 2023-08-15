@@ -10,7 +10,9 @@ public class ItemCollector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cherry")) 
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(collision.gameObject, 5f);
             cherries++;
             Debug.Log("Cherries" + cherries);
         }

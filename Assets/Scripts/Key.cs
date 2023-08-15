@@ -21,37 +21,26 @@ public class Key : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        /*if (col.CompareTag("Player"))
+        if (col.CompareTag("Player"))
         {
             StartCoroutine(Move());
-            GetComponent<>
-            Destory(game)
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 0.001f);
+            //GetComponent<>
+            //Destory(game)
+            //gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 0.001f);
             //door.GetComponent<Rigidbody2D>().AddForce(new Vector2(x_force, y_force));
-        }*/
+        }
 
     }
 
-        IEnumerator Move()
+    IEnumerator Move()
+    {
+        while (true)
         {
-            while (true)
-            {
-                gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 0.001f);
+            //print("aaa");
+            door.transform.position = Vector3.Lerp(door.transform.position, targetPosition, 0.001f);
             yield return null;
-            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
     // Update is called once per frame
     /*void Update()
