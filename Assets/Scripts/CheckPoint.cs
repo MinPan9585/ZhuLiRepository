@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
+    public GameObject LE;
     /*void ChangeSprite()
     {
         spriteRenderer.sprite = newSprite;
@@ -23,6 +25,7 @@ public class CheckPoint : MonoBehaviour
             sm.lastPosition = transform.position;
 
             spriteRenderer.sprite = newSprite;
+            Instantiate(LE, transform.position, Quaternion.identity);
             SaveManager.Instance.lastPosition=transform.position;
         }
     }

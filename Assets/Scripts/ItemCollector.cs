@@ -8,7 +8,7 @@ public class ItemCollector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Cherry")) ;
+        if (collision.gameObject.CompareTag("Cherry")) 
         {
             Destroy(collision.gameObject);
             cherries++;

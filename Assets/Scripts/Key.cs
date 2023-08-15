@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Key : MonoBehaviour
@@ -11,24 +12,34 @@ public class Key : MonoBehaviour
     public float xxx;
     public float yyy;
 
-    //private Vector3 targetPosition = new Vector3(xxx, yyy, 0);
-
-
-
-/*    private void OnDestroy()
+    private Vector3 targetPosition;
+    private void Start()
     {
-        StartCoroutine(Move());
-        gameObject.transform.position = Vector3.Lerp(transform.position,targetPosition, 0.001f);
-        //door.GetComponent<Rigidbody2D>().AddForce(new Vector2(x_force, y_force));
+        targetPosition = new Vector3(xxx, yyy, 0);
     }
 
-    IEnumerator Move()
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        while (true)
+        /*if (col.CompareTag("Player"))
         {
+            StartCoroutine(Move());
+            GetComponent<>
+            Destory(game)
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 0.001f);
+            //door.GetComponent<Rigidbody2D>().AddForce(new Vector2(x_force, y_force));
+        }*/
+
+    }
+
+        IEnumerator Move()
+        {
+            while (true)
+            {
+                gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 0.001f);
+            yield return null;
+            }
         }
-    }*/
 
 
 
