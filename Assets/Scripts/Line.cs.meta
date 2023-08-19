@@ -3,7 +3,10 @@ guid: 079d70df28e4cff4682e05aa4d1cf957
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lineRenderer: {instanceID: 0}
+  - edgeCollider: {instanceID: 0}
+  - drawing: {fileID: 8269387280278825737, guid: aeed327bcb9f3ce47b2f4aaa45d0558f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -10,7 +10,11 @@ public class Line : MonoBehaviour
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private EdgeCollider2D edgeCollider;
 
+    //public GameObject drawing;
+
     private List<Vector2> points = new List<Vector2>();
+
+    public bool isVisible;
     void Start()
     {
         //drawManager = FindObjectOfType<DrawManager>();
@@ -38,6 +42,8 @@ public class Line : MonoBehaviour
         DrawManager.dm.currentEnergy--;
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, pos);
 
+        //Instantiate(drawing, transform.position, Quaternion.identity);
+
         edgeCollider.points = points.ToArray();
     }
 
@@ -54,7 +60,24 @@ public class Line : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         //StartCoroutine(Fade());
-        yield return new WaitForSeconds(2);
+        for(int i=0;i<8;i++)
+        {
+            isVisible = !isVisible;
+            if(!isVisible)
+            {
+                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 0);
+                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 0);
+            }
+            else
+            {
+                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 1);
+                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 1);
+            }
+        }
+
+
+
+        yield return new WaitForSeconds(0.1f);
         DrawManager.dm.currentEnergy += lineRenderer.positionCount;
         Destroy(gameObject);
     }

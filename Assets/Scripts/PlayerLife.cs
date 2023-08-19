@@ -36,5 +36,6 @@ public class PlayerLife : MonoBehaviour
     private void restartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        anim.SetTrigger("Start");
     }
 }

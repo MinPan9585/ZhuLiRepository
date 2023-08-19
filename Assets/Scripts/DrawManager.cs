@@ -21,6 +21,8 @@ public class DrawManager : MonoBehaviour
 
     private Line currentLine;
 
+    //public GameObject drawing;
+
     void Start()
     {
         cam = Camera.main;
@@ -32,6 +34,7 @@ public class DrawManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            //Instantiate(drawing, transform.position, Quaternion.identity);
             currentLine = Instantiate(linePrefab, mousePos, Quaternion.identity);
             currentLine.gameObject.layer = LayerMask.NameToLayer("Ground");
         }
