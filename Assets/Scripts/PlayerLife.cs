@@ -9,6 +9,8 @@ public class PlayerLife : MonoBehaviour
     private Animator anim;
     private PlayerMoverment playerMove;
     
+    //public GameObject scene;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +33,7 @@ public class PlayerLife : MonoBehaviour
         rb.GetComponent<BoxCollider2D>().enabled = false;
         playerMove.isDead = true;
         anim.SetTrigger("death");
+        //StartCoroutine(Die2());
     }
 
     private void restartLevel()
@@ -38,4 +41,11 @@ public class PlayerLife : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         anim.SetTrigger("Start");
     }
+
+    /*IEnumerator Die2()
+    {
+        yield return new WaitForSeconds(1);
+        scene.anim.Settrigger("Start");
+        yield return new WaitForSeconds(0.1f);
+    }*/
 }
