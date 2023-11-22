@@ -13,6 +13,7 @@ public class CursorManager : MonoBehaviour
     void Start()
     {
         Cursor.SetCursor(cursorTex, new Vector2(16, 16), CursorMode.Auto);
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

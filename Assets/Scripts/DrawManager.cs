@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,8 @@ public class DrawManager : MonoBehaviour
     public float currentEnergy;
     public float smoothing;
 
-    private Camera cam;
+    public Camera cam;
+    public CinemachineVirtualCameraBase cine;
     [SerializeField] private Line linePrefab;
 
     public const float RESOLUTION = 0.1f;
@@ -25,7 +27,7 @@ public class DrawManager : MonoBehaviour
 
     void Start()
     {
-        cam = Camera.main;
+        //cam = Camera.main;
     }
 
     void Update()

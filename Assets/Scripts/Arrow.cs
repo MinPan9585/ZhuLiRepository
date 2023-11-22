@@ -23,7 +23,6 @@ public class Arrow : MonoBehaviour
     //{
     //    rb.AddForce(new Vector2(ArrowSpawner.ars.x_force, ArrowSpawner.ars.y_force));
     //}
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);

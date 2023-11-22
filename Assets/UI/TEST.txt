@@ -1,14 +1,14 @@
 E
-emmmmm，显然现在遇到些大麻烦了。
+emmmmm, obviously, we are in some big trouble now. ****(Press E to advance the conversation)****
 A
-...（按E推进对话）
+... ****(Press E to advance the conversation)****
 B
-显然它睡着了，而且困在这个奇奇怪怪的地方了。它需要你的帮助离开这里。
+Obviously, she is asleep and trapped in this strange place. She needs your help to get out of here.
 D
-你可能已经忘了怎么使用自己的能力了，我来帮你回忆一下。
+You may have forgotten how to use your abilities. Let me help you recall.
 B
-A/D键左右移动，W键跳跃，D键可以在空中向下俯冲。在跳跃过程中俯冲而不完成完整的一次跳跃，可以避免一些威胁。此外，你画出的线是可以让它着陆的。
+The A/D key moves left and right, the W key jumps, and the D key can dive down in the air. Diving during a jump without completing a complete jump can avoid some threats. In addition, the lines you draw can make she land.
 C
-如果用简图表达的话，是这样的。
+Here you go. 
 D
-好啦，你可以先试试看跳到左边那个平台上。注意，红色代表危险。当你卡在某个地方，可以随时问我哦。哈哈，祝你好运！
+Alright, you can try jumping to the platform on the left first. Attention, RED represents DANGER, DO NOT TOUCH THEM. When you get stuck somewhere, you can ask me anytime, just press E when next to me. Haha, good luck!

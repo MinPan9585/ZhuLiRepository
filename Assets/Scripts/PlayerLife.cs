@@ -9,7 +9,7 @@ public class PlayerLife : MonoBehaviour
     private Animator anim;
     private PlayerMoverment playerMove;
     
-    //public GameObject scene;
+
     
     private void Start()
     {
@@ -33,7 +33,7 @@ public class PlayerLife : MonoBehaviour
         rb.GetComponent<BoxCollider2D>().enabled = false;
         playerMove.isDead = true;
         anim.SetTrigger("death");
-        //StartCoroutine(Die2());
+        //BrackeysWipe.anim.Settrigger("Start");
     }
 
     private void restartLevel()
@@ -42,10 +42,7 @@ public class PlayerLife : MonoBehaviour
         anim.SetTrigger("Start");
     }
 
-    /*IEnumerator Die2()
-    {
-        yield return new WaitForSeconds(1);
-        scene.anim.Settrigger("Start");
-        yield return new WaitForSeconds(0.1f);
-    }*/
+
+
+
 }

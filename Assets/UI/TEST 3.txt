@@ -1,8 +1,8 @@
+D
+You may have noticed that some obstacles cannot be directly passed through, and those dangerous crystals emit too quickly.
 B
-你也许注意到了，有的障碍根本没法直接通过，那些危险的晶体发射得太快了。
-B
-但是你不要忘了，你画的线不一定只是作为临时平台。
+But don't forget, the lines you draw may not just serve as temporary platforms.
 A
-。。。
-B
-那我就默认你懂啦，去试试吧！
+...
+D
+Go give it a try!
