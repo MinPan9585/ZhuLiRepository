@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 1125506208067555241}
   - component: {fileID: 1125506208067555242}
   - component: {fileID: 4282141518560375927}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LineV2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,10 +105,10 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 2147483649
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 53f2423f07ab7b24b9f85dbd1a8a8207, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,9 +126,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -834998621
+  m_SortingLayer: 4
+  m_SortingOrder: 8
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
@@ -199,3 +199,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1125506208067555242}
   edgeCollider: {fileID: 8341256247421620730}
+  isVisible: 0

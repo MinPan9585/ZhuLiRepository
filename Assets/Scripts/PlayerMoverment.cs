@@ -23,7 +23,7 @@ public class PlayerMoverment : MonoBehaviour
     //Dash
     private bool canDash = true;
     public bool isDashing;
-    private float dashingPower = -12f;
+    private float dashingPower = -15f;
     private float dashingTime = 0.1f;
     private float noDashTime = 0.1f;
 
@@ -159,12 +159,16 @@ public class PlayerMoverment : MonoBehaviour
             //print("fff");
             state = MovementState.falling;
         }
-        /*else if(rb.velocity.y <= -1f)
+
+
+
+
+ /*       else if(rb.velocity.y <= -1f)
         {
             print("ddddddddddddd");
             state = MovementState.dashing;
-        }*/
-        /*else
+        }
+        else
         {
             state = MovementState.idle;
         }*/

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a1631fdecf3c2af4086dbd89283a449a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cam: {instanceID: 0}
+  - cine: {instanceID: 0}
+  - linePrefab: {fileID: 4282141518560375927, guid: 0df4245060c5da74ea47ea22ce7f65aa, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
