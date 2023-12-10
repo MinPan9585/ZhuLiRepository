@@ -15,6 +15,8 @@ public class Line : MonoBehaviour
     private List<Vector2> points = new List<Vector2>();
 
     public bool isVisible;
+    float lineAlpha = 1;
+    bool isTrans = false;
     void Start()
     {
         edgeCollider.transform.position -= transform.position;
@@ -50,24 +52,41 @@ public class Line : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         //StartCoroutine(Fade());
-        for(int i=0;i<8;i++)
+        //for(int i=0;i<8;i++)
+        //{
+        //    isVisible = !isVisible;
+        //    if(!isVisible)
+        //    {
+        //        lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 0);
+        //        lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 0);
+        //    }
+        //    else
+        //    {
+        //        lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 1);
+        //        lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 1);
+        //    }
+        //}
+
+        while (!isTrans)
         {
-            isVisible = !isVisible;
-            if(!isVisible)
+            print(lineAlpha);
+            lineAlpha -= Time.deltaTime * 0.6f;
+            lineRenderer.startColor = new Color(1, 0.87f, 0.41f, lineAlpha);
+            lineRenderer.endColor = new Color(1, 0.87f, 0.41f, lineAlpha);
+
+            if (lineAlpha > 0.1f)
             {
-                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 0);
-                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 0);
+                yield return null;
             }
             else
             {
-                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 1);
-                lineRenderer.startColor = new Color(1, 0.87f, 0.41f, 1);
+                isTrans = true;
             }
+
         }
+        
 
-
-
-        yield return new WaitForSeconds(0.1f);
+        //yield return new WaitForSeconds(0.1f);
         DrawManager.dm.currentEnergy += lineRenderer.positionCount;
         Destroy(gameObject);
     }
